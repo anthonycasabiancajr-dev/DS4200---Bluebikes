@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "strokeWidth": 0}, "axis": {"grid": true, "gridColor": "#eeeeee", "labelFontSize": 11, "titleFontSize": 12}, "facet": {"spacing": 24}}, "data": {"name": "data-f214ed996cf8f7b357ede673004821e6"}, "facet": {"column": {"field": "usertype", "header": {"labelColor": "#333", "labelFontSize": 14, "labelFontWeight": "normal", "labelPadding": 12}, "sort": ["Subscriber", "Customer"], "title": null, "type": "nominal"}}, "spec": {"mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3}, "encoding": {"color": {"field": "period", "legend": {"labelFontSize": 11, "orient": "top", "symbolSize": 120, "symbolType": "square", "title": null}, "scale": {"domain": ["Pre-Pandemic (2019)", "Post-Pandemic (2022)", "Post-Pandemic (2023)"], "range": ["#BA7517", "#5DCAA5", "#085041"]}, "sort": ["Pre-Pandemic (2019)", "Post-Pandemic (2022)", "Post-Pandemic (2023)"], "type": "nominal"}, "opacity": {"condition": {"param": "param_87696c9352ab385f", "value": 1.0}, "value": 0.2}, "tooltip": [{"field": "usertype", "title": "Rider type", "type": "nominal"}, {"field": "year_label", "title": "Year", "type": "nominal"}, {"field": "annual_trips", "format": ",", "title": "Annual trips", "type": "quantitative"}, {"field": "pct", "format": ".1f", "title": "% of year total", "type": "quantitative"}, {"field": "year_total", "format": ",", "title": "Year total", "type": "quantitative"}], "x": {"axis": {"labelAngle": 0, "labelFontSize": 12}, "field": "year_label", "sort": ["2019", "2022", "2023"], "title": null, "type": "nominal"}, "y": {"axis": {"format": "~s"}, "field": "annual_trips", "title": "Annual trips", "type": "quantitative"}}, "height": 320, "name": "view_fae7df6618198493_0", "width": 240}, "params": [{"name": "param_87696c9352ab385f", "select": {"type": "point", "fields": ["period"]}, "bind": "legend", "views": ["view_fae7df6618198493_0"]}], "title": {"text": "Annual trips by rider type: subscriber vs. casual", "anchor": "middle", "fontSize": 15, "subtitle": "Hover any bar for exact counts. Click a year in the legend to isolate it across both panels.", "subtitleColor": "gray", "subtitleFontSize": 12}, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-f214ed996cf8f7b357ede673004821e6": [{"period": "Post-Pandemic (2022)", "year": 2022, "usertype": "Customer", "annual_trips": 906925, "year_total": 3738722, "pct": 24.3, "year_label": "2022"}, {"period": "Post-Pandemic (2022)", "year": 2022, "usertype": "Subscriber", "annual_trips": 2831797, "year_total": 3738722, "pct": 75.7, "year_label": "2022"}, {"period": "Post-Pandemic (2023)", "year": 2023, "usertype": "Customer", "annual_trips": 955512, "year_total": 3632028, "pct": 26.3, "year_label": "2023"}, {"period": "Post-Pandemic (2023)", "year": 2023, "usertype": "Subscriber", "annual_trips": 2676516, "year_total": 3632028, "pct": 73.7, "year_label": "2023"}, {"period": "Pre-Pandemic (2019)", "year": 2019, "usertype": "Customer", "annual_trips": 532364, "year_total": 2519965, "pct": 21.1, "year_label": "2019"}, {"period": "Pre-Pandemic (2019)", "year": 2019, "usertype": "Subscriber", "annual_trips": 1987601, "year_total": 2519965, "pct": 78.9, "year_label": "2019"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
