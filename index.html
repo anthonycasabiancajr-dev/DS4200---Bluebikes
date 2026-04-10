@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boston Blue Bikes: Ridership Before and After COVID-19</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #222;
+      background: #fff;
+    }
+    h1 { font-size: 1.6em; margin-bottom: 4px; }
+    h3 { font-size: 1.1em; margin-top: 40px; margin-bottom: 6px; }
+    p { margin: 0 0 14px 0; }
+    table {
+      border-collapse: collapse;
+      font-size: 0.9em;
+      margin: 16px 0 24px 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px 12px;
+      text-align: left;
+    }
+    th { background: #f5f5f5; }
+    .viz-block { margin: 32px 0; }
+    .viz-block iframe {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      display: block;
+    }
+    .viz-placeholder {
+      width: 100%;
+      height: 200px;
+      border: 2px dashed #bbb;
+      background: #fafafa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-style: italic;
+      font-size: 0.95em;
+      box-sizing: border-box;
+    }
+    .caption {
+      font-size: 0.85em;
+      color: #555;
+      margin-top: 6px;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 40px 0;
+    }
+    a { color: #1a5276; }
+  </style>
+</head>
+<body>
+
+<h1>Boston Blue Bikes: Ridership Trends Before and After COVID-19</h1>
+
+<hr>
+
+<h3>Introduction</h3>
+
+<p>
+  The COVID-19 pandemic disrupted urban transportation systems across the country, and Boston's Blue Bikes bike share program was no exception. Lockdowns, remote work, and shifting commuting patterns altered who was riding, when, and for how long. This project examines Blue Bikes ridership data from 2019 (pre-pandemic) and 2022–2023 (post-pandemic recovery) to understand how usage patterns changed — and whether ridership has returned to its pre-pandemic character.
+</p>
+
+<p>
+  Three dimensions are explored: overall ridership volume over time, the balance between subscriber (annual member) and casual (single-ride or day-pass) riders, when and where rides occur, and how long trips last. Together, these views reveal a system that has grown substantially in total trips but shifted meaningfully in who is using it and how.
+</p>
+
+<hr>
+
+<h3>About the Data</h3>
+
+<p>
+  This analysis uses publicly available trip data from <a href="https://www.bluebikes.com/system-data" target="_blank">Blue Bikes System Data</a>. Three full calendar years are compared: 2019, 2022, and 2023. Each row in the raw data represents a single trip and includes the following fields:
+</p>
+
+<table>
+  <tr><th>Variable</th><th>Description</th></tr>
+  <tr><td>tripduration</td><td>Length of the trip in seconds</td></tr>
+  <tr><td>starttime / stoptime</td><td>Timestamp when the trip began and ended</td></tr>
+  <tr><td>start station / end station</td><td>Name and ID of the origin and destination docking station</td></tr>
+  <tr><td>start station latitude/longitude</td><td>Geographic coordinates of the origin station</td></tr>
+  <tr><td>usertype</td><td>Subscriber (annual member) or Customer (casual rider)</td></tr>
+  <tr><td>birth year</td><td>Rider's birth year (available for subscribers)</td></tr>
+  <tr><td>gender</td><td>Rider's self-reported gender (available for subscribers)</td></tr>
+</table>
+
+<p>
+  Trips shorter than 1 minute or longer than 3 hours were excluded as likely data errors or dock adjustments. The 2020 and 2021 data were excluded due to pandemic-related disruptions that make those years difficult to interpret as either a stable baseline or a clean recovery period.
+</p>
+
+<hr>
+
+<h3>Visualization 1: Monthly Ridership Over Time</h3>
+
+<p>
+  Total trip counts by month reveal the strong seasonal pattern that characterizes urban bike share — ridership climbs sharply through spring and summer, then falls off in fall and winter. Comparing the three years shows that 2022 and 2023 both substantially exceed 2019 in total volume, particularly in the late-summer and fall months. The post-pandemic system is not merely recovered; it is larger.
+</p>
+
+<p>
+  One notable shift is the flattening of the winter trough. January and February 2023 saw nearly twice the ridership of those same months in 2019, suggesting a broader and more committed rider base has formed — possibly driven by the expansion of the docking station network or increased adoption of e-bikes.
+</p>
+
+<div class="viz-block">
+  <iframe src="viz/viz1_rider_mix.html" height="450" scrolling="no"></iframe>
+  <p class="caption">Figure 1. Monthly total trips for 2019, 2022, and 2023. Click a year in the legend to isolate it. Hover any point for subscriber/casual breakdown.</p>
+</div>
+
+<hr>
+
+<h3>Visualization 2: Ridership Heatmap by Hour and Day</h3>
+
+<p>
+  Looking at when rides occur — broken down by hour of day and day of week — reveals striking differences between weekday and weekend usage patterns. On weekdays, ridership peaks sharply around 8 AM and again around 5–6 PM, a clear commuter signature. Weekend ridership, by contrast, is spread more evenly across midday hours with no pronounced peaks.
+</p>
+
+<p>
+  [ADD 2–3 sentences here about what changed between 2019 and post-pandemic years — e.g., did the commuter peak weaken? Did weekend riding grow? Reference your heatmap data specifically.]
+</p>
+
+<div class="viz-block">
+  <iframe src="viz/viz2_heatmap.html" height="450" scrolling="no"></iframe>
+  <p class="caption">Figure 2. Trip counts by hour of day and day of week. Darker cells indicate higher ridership. [Add year context here.]</p>
+</div>
+
+<hr>
+
+<h3>Visualization 3: [In Progress]</h3>
+
+<p>
+  [Description of Visualization 3 — add once finalized.]
+</p>
+
+<div class="viz-block">
+  <div class="viz-placeholder">Visualization 3 — coming soon</div>
+  <p class="caption">Figure 3. [Title and caption to be added.]</p>
+</div>
+
+<hr>
+
+<h3>Visualization 4: Annual Trips by Rider Type</h3>
+
+<p>
+  Blue Bikes distinguishes between <em>subscribers</em> (annual members) and <em>customers</em> (casual riders who purchase single-ride or day passes). In 2019, subscribers made up roughly 79% of all trips. By 2022 and 2023, that share had declined slightly — casual riders now account for approximately 24–26% of annual trips, up from 21% before the pandemic.
+</p>
+
+<p>
+  In absolute terms, both groups grew. Casual ridership nearly doubled from 2019 to 2022, which may reflect growth in tourism, recreational cycling, or new riders trying the system without committing to a membership. Subscriber trip totals also grew substantially, indicating that the core user base expanded alongside the casual segment.
+</p>
+
+<div class="viz-block">
+  <iframe src="viz/viz4_rider_type.html" height="430" scrolling="no"></iframe>
+  <p class="caption">Figure 4. Annual trips by rider type (subscriber vs. casual) for 2019, 2022, and 2023. Hover bars for exact counts. Click a year in the legend to isolate it across both panels.</p>
+</div>
+
+<hr>
+
+<h3>Visualization 5: Trip Duration Distribution</h3>
+
+<p>
+  [Add 2–3 sentences describing what the duration distribution shows — e.g., median trip length, how subscriber vs. casual durations differ, whether durations shifted post-pandemic.]
+</p>
+
+<div class="viz-block">
+  <iframe src="viz/viz5_duration.html" height="450" scrolling="no"></iframe>
+  <p class="caption">Figure 5. Distribution of trip durations. [Add a more specific caption once you've reviewed the chart.]</p>
+</div>
+
+<hr>
+
+<h3>Summary</h3>
+
+<p>
+  Taken together, these visualizations paint a picture of a bike share system in transition. Total ridership has grown well beyond pre-pandemic levels, driven by both a larger subscriber base and a notable increase in casual usage. The timing of rides still reflects commuter behavior on weekdays, but the growth in weekend and off-peak ridership suggests that Blue Bikes is reaching a broader range of use cases — recreation, errands, and tourism — than it did in 2019.
+</p>
+
+<p>
+  Future analysis could examine station-level trends to identify which neighborhoods saw the most growth, or explore demographic shifts using the available subscriber birth year and gender data.
+</p>
+
+<p>
+  For questions or comments, please contact: [Your name and email here]
+</p>
+
+</body>
+</html>
